@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Enums\RolesType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -23,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -45,4 +47,21 @@ class User extends Authenticatable
         'password' => 'hashed',
         'role'=>RolesType::class
     ];
+
+    public function pelanggan(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Pelanggan::class);
+    }
+    public function pemilik(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Pemilik::class);
+    }
+    public function review(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+    public function sewa(): HasMany
+    {
+        return $this->hasMany(Sewa::class);
+    }
 }

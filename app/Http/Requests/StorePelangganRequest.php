@@ -11,7 +11,7 @@ class StorePelangganRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StorePelangganRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nik'=>'required|numeric|min_digits:16|max_digits:16|unique:pelanggans,nik',
+            'user_id'=>'required|exists:users,id|unique:pelanggans,user_id',
+            'address'=>'required|string',
+            'phone'=>'required|numeric|min_digits:10|max_digits:13|unique:pelanggans,phone',
         ];
     }
 }

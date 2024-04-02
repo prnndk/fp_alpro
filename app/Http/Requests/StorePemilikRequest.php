@@ -11,7 +11,7 @@ class StorePemilikRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StorePemilikRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'user_id' => 'required|exists:users,id|unique:pemiliks,user_id',
+            'phone'=>'required|string|max_digits:13|min_digits:10|unique:pemiliks,phone',
+            'address'=>'required|string',
         ];
     }
 }

@@ -2,26 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\RolesType;
 use App\Models\Pemilik;
 use App\Http\Requests\StorePemilikRequest;
 use App\Http\Requests\UpdatePemilikRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class PemilikController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index():View
     {
-        //
+        return view('admin.pemilik.index', [
+            'pemiliks' => Pemilik::all()
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        $users = User::where('role',RolesType::OWNER->value)->whereNotIn('id',Pemilik::pluck('user_id'))->get();
+        return view('admin.pemilik.create', compact('users'));
     }
 
     /**
@@ -29,7 +36,17 @@ class PemilikController extends Controller
      */
     public function store(StorePemilikRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        DB::beginTransaction();
+        try {
+            $pemilik = Pemilik::create($data);
+            DB::commit();
+            return redirect(route('pemilik.index'))->with('success', 'Berhasil Menambahkan data Pemilik');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('errors', 'Pemilik gagal ditambahkan');
+        }
     }
 
     /**
@@ -61,6 +78,14 @@ class PemilikController extends Controller
      */
     public function destroy(Pemilik $pemilik)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $pemilik->delete();
+            DB::commit();
+            return redirect(route('pemilik.index'))->with('success', 'Berhasil Menghapus data Pemilik');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('errors', 'Pemilik gagal dihapus');
+        }
     }
 }
