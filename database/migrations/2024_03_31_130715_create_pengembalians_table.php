@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pengembalians', function (Blueprint $table) {
             $table->id();
             $table->string('kondisi');
+            $table->double('denda');
             $table->boolean('is_telat')->default(false);
             $table->dateTime('tanggal_kembali');
             $table->foreignId('sewa_id')->constrained()->onDelete('cascade');

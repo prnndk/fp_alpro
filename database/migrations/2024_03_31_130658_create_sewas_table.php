@@ -18,6 +18,8 @@ return new class extends Migration
             $table->double('total_harga');
             $table->foreignId('users_id')->constrained()->onDelete('cascade');
             $table->foreignId('kendaraan_id')->constrained('kendaraans')->onDelete('cascade');
+            $table->enum('status_sewa',['ditolak','disetujui','selesai']);
+            $table->string('reject_message')->nullable();
             $table->timestamps();
         });
     }

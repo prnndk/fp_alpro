@@ -15,7 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('bukti_pembayaran');
             $table->string('pembayaran_via', 40);
+            $table->enum('type_pembayaran', ['dp', 'pelunasan','denda']);
+            $table->double('jumlah_dibayarkan');
             $table->foreignId('sewa_id')->constrained()->onDelete('cascade');
+            $table->enum('status_pembayaran', ['revisi', 'diterima', 'ditolak']);
+            $table->string('reject_message')->nullable();
             $table->timestamps();
         });
     }
