@@ -79,7 +79,7 @@ class KendaraanSeeder extends Seeder
             [
                 'name'=> 'Vario 125',
                 'merk'=> 'Honda',
-                'plat_nomor'=> 'B 5678 STU',
+                'plat_nomor'=> 'B 5678 STV',
                 'warna'=> 'Merah',
                 'harga'=> 30000,
                 'kondisi'=> 'Mesin normal, knalpot modif, spion kanan copot',

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pemiliks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('phone',15);
+            $table->string('phone',15)->unique();
             $table->string('address');
             $table->timestamps();
         });

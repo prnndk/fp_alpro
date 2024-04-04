@@ -2,9 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\RolesType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
-class StoreSewaRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +25,9 @@ class StoreSewaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tanggal_sewa' => 'required|date',
-            'tanggal_perkiraan_kembali' => 'required|date',
-            'kendaraan_id' => 'required|exists:kendaraans,id',
-            'users_id' => 'required|exists:users,id',
+            'name' => 'required|string|unique:users,name|max:255',
+            'email' => 'required|email:dns|unique:users,email',
+            'password' => ['required','string',Password::min(8)->numbers()],
         ];
     }
 }

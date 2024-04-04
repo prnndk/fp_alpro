@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('merk');
-            $table->string('plat_nomor');
+            $table->string('plat_nomor')->unique();
             $table->double('harga');
             $table->string('warna');
             $table->string('kondisi');
+            $table->string('image')->nullable();
             $table->foreignId('tipe_kendaraan_id')->constrained()->onDelete('cascade');
             $table->foreignId('pemilik_id')->constrained()->onDelete('cascade');
             $table->timestamps();

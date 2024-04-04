@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Enums\RolesType;
-use App\Models\Pelanggan;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePelangganRequest;
 use App\Http\Requests\UpdatePelangganRequest;
+use App\Models\Pelanggan;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;

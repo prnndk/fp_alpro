@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Enums\RolesType;
-use App\Models\Pemilik;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePemilikRequest;
 use App\Http\Requests\UpdatePemilikRequest;
+use App\Models\Pemilik;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;

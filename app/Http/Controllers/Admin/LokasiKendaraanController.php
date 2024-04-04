@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Sewa;
-use App\Http\Requests\StoreSewaRequest;
-use App\Http\Requests\UpdateSewaRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreLokasiKendaraanRequest;
+use App\Http\Requests\UpdateLokasiKendaraanRequest;
+use App\Models\LokasiKendaraan;
 
-class SewaController extends Controller
+class LokasiKendaraanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class SewaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSewaRequest $request)
+    public function store(StoreLokasiKendaraanRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class SewaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sewa $sewa)
+    public function show(LokasiKendaraan $lokasiKendaraan)
     {
         //
     }
@@ -43,7 +44,7 @@ class SewaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sewa $sewa)
+    public function edit(LokasiKendaraan $lokasiKendaraan)
     {
         //
     }
@@ -51,7 +52,7 @@ class SewaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSewaRequest $request, Sewa $sewa)
+    public function update(UpdateLokasiKendaraanRequest $request, LokasiKendaraan $lokasiKendaraan)
     {
         //
     }
@@ -59,7 +60,7 @@ class SewaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sewa $sewa)
+    public function destroy(LokasiKendaraan $lokasiKendaraan)
     {
         //
     }

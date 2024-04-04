@@ -117,8 +117,12 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-box-arrow-left me-2"></i>
-                                        Logout</a></li>
+                                <li>
+                                    <form action="{{route('logout')}}" method="post">@csrf
+                                        <button class="dropdown-item" type="submit"><i
+                                                class="icon-mid bi bi-box-arrow-left me-2"></i>
+                                            Logout</button>
+                                    </form>
                             </ul>
                         </div>
                     </div>

@@ -14,9 +14,9 @@ class Kendaraan extends Model
 
     protected $guarded = ['id'];
 
-    public function user(): BelongsTo
+    public function pemilik(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Pemilik::class);
     }
     public function tipe_kendaraan() : BelongsTo
     {

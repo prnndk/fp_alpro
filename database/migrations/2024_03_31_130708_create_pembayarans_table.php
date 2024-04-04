@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid');
             $table->string('bukti_pembayaran');
             $table->string('pembayaran_via', 40);
             $table->enum('type_pembayaran', ['dp', 'pelunasan','denda']);
             $table->double('jumlah_dibayarkan');
             $table->foreignId('sewa_id')->constrained()->onDelete('cascade');
-            $table->enum('status_pembayaran', ['revisi', 'diterima', 'ditolak']);
+            $table->enum('status_pembayaran', ['revisi', 'diterima', 'ditolak','menunggu'])->default('menunggu');
             $table->string('reject_message')->nullable();
             $table->timestamps();
         });

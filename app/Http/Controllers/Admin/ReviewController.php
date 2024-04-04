@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\TipeKendaraan;
-use App\Http\Requests\StoreTipeKendaraanRequest;
-use App\Http\Requests\UpdateTipeKendaraanRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreReviewRequest;
+use App\Http\Requests\UpdateReviewRequest;
+use App\Models\Review;
 
-class TipeKendaraanController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class TipeKendaraanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTipeKendaraanRequest $request)
+    public function store(StoreReviewRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class TipeKendaraanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TipeKendaraan $tipeKendaraan)
+    public function show(Review $review)
     {
         //
     }
@@ -43,7 +44,7 @@ class TipeKendaraanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TipeKendaraan $tipeKendaraan)
+    public function edit(Review $review)
     {
         //
     }
@@ -51,7 +52,7 @@ class TipeKendaraanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTipeKendaraanRequest $request, TipeKendaraan $tipeKendaraan)
+    public function update(UpdateReviewRequest $request, Review $review)
     {
         //
     }
@@ -59,7 +60,7 @@ class TipeKendaraanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TipeKendaraan $tipeKendaraan)
+    public function destroy(Review $review)
     {
         //
     }
