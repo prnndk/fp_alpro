@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-Route::get('/', function () {
-    return view('testing');
-});
+//Route::get('/', function () {
+//    return view('testing');
+//});
+Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
+
+Route::get('/as', [LandingPageController::class, 'index2'])->name('landingpage');
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');
     Route::post('/register', [\App\Http\Controllers\AuthController::class, 'store'])->name('postRegister');
