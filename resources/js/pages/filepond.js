@@ -1,12 +1,12 @@
+import * as FilePond from "filepond";
+
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+//get the css
+
+
 
 FilePond.registerPlugin(
   FilePondPluginImagePreview,
-  FilePondPluginImageCrop,
-  FilePondPluginImageExifOrientation,
-  FilePondPluginImageFilter,
-  FilePondPluginImageResize,
-  FilePondPluginFileValidateSize,
-  FilePondPluginFileValidateType,
 )
 
 // Filepond: Basic

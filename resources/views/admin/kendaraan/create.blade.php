@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body">
                         <div class="col-md-12">
-                            <form action="{{route('admin.kendaraan.store')}}" method="post">
+                            <form action="{{route('admin.kendaraan.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">Nama Kendaraan</label>
@@ -114,6 +114,10 @@
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label for="image">Upload Image</label>
+                                    <input type="file" class="image-preview-filepond" name="image" id="image">
+                                </div>
                                 <button class="btn btn-primary" type="submit">Submit</button>
                             </form>
                         </div>
@@ -128,8 +132,17 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
     />
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+    <link
+        href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+        rel="stylesheet"
+    />
+
 @endsection
 @section('scripts')
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
     @vite('resources/js/pages/form-element-select.js')
+    @vite('resources/js/pages/filepond.js')
 @endsection

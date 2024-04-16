@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body">
                         <div class="col-md-12">
-                            <form action="{{route('admin.kendaraan.update',$kendaraan->id)}}" method="post">
+                            <form action="{{route('admin.kendaraan.update',$kendaraan->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
@@ -106,6 +106,13 @@
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
+                                @if($kendaraan->image)
+                                    <img src="{{asset('images/kendaraan/'.$kendaraan->image)}}" alt="" class="img-fluid w-100">
+                                @endif
+                                <div class="form-group">
+                                    <label for="image">Upload Image</label>
+                                    <input type="file" class="image-preview-filepond" name="image" id="image" value="{{old('image',$kendaraan->image)}}">
+                                </div>
                                 <button class="btn btn-primary" type="submit">Edit Data</button>
                             </form>
                         </div>
@@ -120,8 +127,17 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
     />
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+    <link
+        href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+        rel="stylesheet"
+    />
+
 @endsection
 @section('scripts')
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
     @vite('resources/js/pages/form-element-select.js')
+    @vite('resources/js/pages/filepond.js')
 @endsection

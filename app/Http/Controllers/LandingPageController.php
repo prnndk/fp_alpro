@@ -9,9 +9,6 @@ class LandingPageController extends Controller
 {
     public function index()
     {
-        $kendaraans = Kendaraan::with('tipe_kendaraan')->get();
-        $tipeKendaraans = TipeKendaraan::all();
-
-        return view('landingpage', compact('kendaraans', 'tipeKendaraans'));
+        return view('landingpage');
     }
 }

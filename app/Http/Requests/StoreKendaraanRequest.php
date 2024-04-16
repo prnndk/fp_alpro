@@ -30,6 +30,7 @@ class StoreKendaraanRequest extends FormRequest
             'kondisi' => 'required|string',
             'tipe_kendaraan_id' => 'required|exists:tipe_kendaraans,id',
             'pemilik_id' => 'required|exists:pemiliks,id',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

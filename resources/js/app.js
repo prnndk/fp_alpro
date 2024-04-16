@@ -7,7 +7,5 @@ featherIcons.replace()
 // Mazer internal JS. Include this in your project to get
 // the sidebar running.
 import "./mazer"
-
 import DataTable from 'datatables.net-bs5'
-
 let dt = new DataTable('#dataTable')

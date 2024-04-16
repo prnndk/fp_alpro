@@ -9,6 +9,9 @@
         <section class="row">
             <div class="col-6">
                 <div class="card">
+                    <div class="card-content">
+                        <img src="{{asset('images/kendaraan/'.$kendaraan->image)}}" class="card-img-top img-fluid">
+                    </div>
                     <div class="card-header">
                         <h4>View {{$kendaraan->name}} data </h4>
                     </div>

@@ -41,9 +41,9 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    public function signup(): View
+    public function register(): View
     {
-        return view('auth.signup');
+        return view('auth.register');
     }
 
     public function store(RegisterRequest $request): RedirectResponse

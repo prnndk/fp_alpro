@@ -1,22 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePengembalianRequest;
-use App\Http\Requests\UpdatePengembalianRequest;
-use App\Models\Pengembalian;
-use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class PengembalianController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index()
     {
-        $pengembalians = Pengembalian::all();
-        return view('admin.pengembalian.index',compact('pengembalians'));
+        //
     }
 
     /**
@@ -30,7 +26,7 @@ class PengembalianController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePengembalianRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -38,7 +34,7 @@ class PengembalianController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pengembalian $pengembalian)
+    public function show(string $id)
     {
         //
     }
@@ -46,7 +42,7 @@ class PengembalianController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pengembalian $pengembalian)
+    public function edit(string $id)
     {
         //
     }
@@ -54,7 +50,7 @@ class PengembalianController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePengembalianRequest $request, Pengembalian $pengembalian)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -62,7 +58,7 @@ class PengembalianController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pengembalian $pengembalian)
+    public function destroy(string $id)
     {
         //
     }

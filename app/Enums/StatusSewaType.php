@@ -7,4 +7,15 @@ enum StatusSewaType: String
     case DISETUJUI = 'disetujui';
     case SELESAI = 'selesai';
     case MENUNGGU = 'menunggu';
+
+    public static function getStatuses(): array
+    {
+        return [
+            self::DITOLAK,
+            self::DISETUJUI,
+            self::SELESAI,
+            self::MENUNGGU
+        ];
+    }
 }
+

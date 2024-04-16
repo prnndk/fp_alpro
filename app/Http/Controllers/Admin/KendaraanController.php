@@ -41,6 +41,13 @@ class KendaraanController extends Controller
     {
         $validated = $request->validated();
 
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path('images/kendaraan'),$filename);
+            $validated['image'] = $filename;
+        }
+
         DB::beginTransaction();
         try{
             Kendaraan::create($validated);
@@ -76,6 +83,13 @@ class KendaraanController extends Controller
     public function update(UpdateKendaraanRequest $request, Kendaraan $kendaraan): RedirectResponse
     {
         $validated = $request->validated();
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path('images/kendaraan'),$filename);
+            $validated['image'] = $filename;
+        }
 
         DB::beginTransaction();
         try{

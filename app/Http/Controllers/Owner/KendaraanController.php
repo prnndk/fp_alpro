@@ -20,9 +20,9 @@ class KendaraanController extends Controller
     public function index(): View
     {
         $kendaraans = Kendaraan::where('pemilik_id',auth()->user()->pemilik->id)->get();
-//        $commonKendaraan = Kendaraan::select('tipe_kendaraan_id')->where('pemilik_id',auth()->user()->pemilik->id)->groupBy('tipe_kendaraan_id')->selectRaw('COUNT(*) AS count')->orderBy('count', 'DESC')->first()->tipe_kendaraan->name;
+        $commonKendaraan = Kendaraan::select('tipe_kendaraan_id')->where('pemilik_id',auth()->user()->pemilik->id)->groupBy('tipe_kendaraan_id')->selectRaw('COUNT(*) AS count')->orderBy('count', 'DESC')->first()->tipe_kendaraan->name;
         confirmDelete('Menghapus data kendaraan','Apakah anda yakin menghapus data kendaraan ini?');
-        return view('owner.kendaraan.index',compact('kendaraans'));
+        return view('owner.kendaraan.index',compact('kendaraans','commonKendaraan'));
     }
 
     /**
@@ -44,6 +44,10 @@ class KendaraanController extends Controller
 
         if ($validated['pemilik_id'] != auth()->user()->pemilik->id){
             $validated['pemilik_id'] = auth()->user()->pemilik->id;
+        }
+
+        if($request->hasFile('image')){
+            $validated['image']=$request->file('image')->store('/images/kendaraan');
         }
 
         DB::beginTransaction();
@@ -84,6 +88,9 @@ class KendaraanController extends Controller
     {
         $validated = $request->validated();
 
+        if ($request->file('image')){
+            $validated['image']=$request->file('image')->store('/images/kendaraan');
+        }
         DB::beginTransaction();
         try{
             $kendaraan->update($validated);
