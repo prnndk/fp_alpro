@@ -11,7 +11,7 @@ class StorePengembalianRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StorePengembalianRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'sewa_id' => ['required', 'integer', 'exists:sewas,id'],
+            'tanggal_kembali' => ['required', 'date', 'before_or_equal:today'],
+            'denda' => ['numeric'],
+            'kondisi' => ['required', 'string'],
         ];
     }
 }

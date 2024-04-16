@@ -48,7 +48,7 @@
                     <span>Home</span>
                 </a>
             </li>
-            @if(Auth::user())
+            @if(auth()->user()->isUser())
                 <li
                     class="sidebar-item ">
                     <a href="{{route('landingpage')}}" class='sidebar-link'>
@@ -56,16 +56,57 @@
                         <span>Order</span>
                     </a>
                 </li>
-            @elseif(Auth::admin())
+            @elseif(auth()->user()->isAdmin())
                 <li
                     class="sidebar-item ">
                     <a href="{{route('users.index')}}" class='sidebar-link'>
                         <i class="bi bi-person-fill"></i>
                         <span>Users</span>
                     </a>
-
                 </li>
-            @elseif(Auth::owner())
+                <li
+                    class="sidebar-item ">
+                    <a href="{{route('pelanggan.index')}}" class='sidebar-link'>
+                        <i class="bi bi-person-fill"></i>
+                        <span>Pelanggan</span>
+                    </a>
+                </li>
+                <li
+                    class="sidebar-item ">
+                    <a href="{{route('pemilik.index')}}" class='sidebar-link'>
+                        <i class="bi bi-person-fill"></i>
+                        <span>Pemilik</span>
+                    </a>
+                </li>
+                <li
+                    class="sidebar-item ">
+                    <a href="{{route('tipe_kendaraan.index')}}" class='sidebar-link'>
+                        <i class="bi bi-person-fill"></i>
+                        <span>Tipe Kendaraan</span>
+                    </a>
+                </li>
+                <li
+                    class="sidebar-item ">
+                    <a href="{{route('admin.sewa.index')}}" class='sidebar-link'>
+                        <i class="bi bi-person-fill"></i>
+                        <span>Sewa</span>
+                    </a>
+                </li>
+                <li
+                    class="sidebar-item ">
+                    <a href="{{route('admin.pembayaran.index')}}" class='sidebar-link'>
+                        <i class="bi bi-person-fill"></i>
+                        <span>Pembayaran</span>
+                    </a>
+                </li>
+                <li
+                    class="sidebar-item ">
+                    <a href="{{route('admin.pengembalian.index')}}" class='sidebar-link'>
+                        <i class="bi bi-person-fill"></i>
+                        <span>Pengembalian</span>
+                    </a>
+                </li>
+            @elseif(auth()->user()->isOwner())
                 <li
                     class="sidebar-item ">
                     <a href="{{route('users.index')}}" class='sidebar-link'>

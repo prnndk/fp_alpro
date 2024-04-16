@@ -64,4 +64,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(Sewa::class);
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->role == RolesType::ADMIN;
+    }
+    public function isUser(): bool
+    {
+        return $this->role == RolesType::USER;
+    }
+    public function isOwner(): bool
+    {
+        return $this->role == RolesType::OWNER;
+    }
 }

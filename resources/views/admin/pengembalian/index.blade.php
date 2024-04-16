@@ -61,6 +61,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Kendaraan/Penyewa</th>
                                 <th>Kondisi</th>
                                 <th>Denda</th>
                                 <th>Terlambat</th>
@@ -72,14 +73,15 @@
                             @foreach($pengembalians as $pengembalian)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
+                                    <td>{{$pengembalian->sewa->kendaraan->name ."/".$pengembalian->sewa->user->name}}</td>
                                     <td>{{$pengembalian->kondisi}}</td>
-                                    <td>{{$pengembalian->denda}}</td>
-                                    <td>{{$pengembalian->is_telat}}</td>
-                                    <td>{{$pengembalian->tanggal_kembali}}</td>
+                                    <td>{{$pengembalian->formatDenda}}</td>
+                                    <td>{{$pengembalian->is_telat ? 'Telat' : 'Tidak Telat'}}</td>
+                                    <td>{{$pengembalian->tanggal_kembali->format('d-m-Y')}}</td>
                                     <td>
-                                        <a href="{{route('admin.kendaraan.show',$pengembalian->id)}}" class="btn btn-primary icon btn-sm"><i class="bi bi-eye"></i></a>
-                                        <a href="{{route('admin.kendaraan.edit',$pengembalian->id)}}" class="btn btn-warning icon btn-sm"><i class="bi bi-pencil"></i></a>
-                                        <a href="{{ route('admin.kendaraan.destroy', $pengembalian->id) }}"
+                                        <a href="{{route('admin.pengembalian.show',$pengembalian->id)}}" class="btn btn-primary icon btn-sm"><i class="bi bi-eye"></i></a>
+{{--                                        <a href="{{route('admin.kendaraan.edit',$pengembalian->id)}}" class="btn btn-warning icon btn-sm"><i class="bi bi-pencil"></i></a>--}}
+                                        <a href="{{ route('admin.pengembalian.destroy', $pengembalian->id) }}"
                                            class="btn btn-danger btn-sm icon" data-confirm-delete="true"><i class="bi bi-trash"></i></a>
                                     </td>
                                 </tr>

@@ -1,5 +1,8 @@
+let tableId = ['table1','table2','table3']
+
+tableId.forEach((id) => {
 let dataTable = new simpleDatatables.DataTable(
-  document.getElementById("table1")
+  document.getElementById(id),
 )
 // Move "per page dropdown" selector element out of label
 // to make it work with bootstrap 5. Add bs5 classes.
@@ -50,3 +53,4 @@ dataTable.on("datatable.sort", refreshPagination)
 
 // Re-patch pagination after the page was changed
 dataTable.on("datatable.page", adaptPagination)
+})

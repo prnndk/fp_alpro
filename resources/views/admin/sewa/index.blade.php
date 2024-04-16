@@ -93,7 +93,7 @@
                                     <td>{{$sewa->tanggal_sewa->format('d/m/Y')}}</td>
                                     <td>{{$sewa->kendaraan->name}}</td>
                                     <td>{{$sewa->user->name}}</td>
-                                    <td>{{\App\Models\Sewa::formatToRupiah($sewa->total_harga)}}</td>
+                                    <td>{{$sewa->formatRupiah}}</td>
                                     <td>{{$sewa->status_sewa}}</td>
                                     <td>
                                         <a href="{{route('admin.sewa.show',$sewa->uuid)}}" class="btn btn-primary icon btn-sm"><i class="bi bi-eye"></i></a>

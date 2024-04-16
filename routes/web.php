@@ -20,8 +20,6 @@ Route::get('/TEST', function () {
     return view('testing');
 });
 Route::get('/', [\App\Http\Controllers\LandingPageController::class, 'index'])->name('landingpage');
-//Route::get('/lama', [\App\Http\Controllers\LandingPageController::class, 'indexlama'])->name('landingpage2');
-
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');
@@ -32,6 +30,7 @@ Route::group(['middleware' => 'guest'], function () {
 Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
 Route::prefix('/admin')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('/users', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('/pelanggan', \App\Http\Controllers\Admin\PelangganController::class);
     Route::resource('/pemilik', \App\Http\Controllers\Admin\PemilikController::class);
