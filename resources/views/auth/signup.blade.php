@@ -16,7 +16,7 @@
                 <h1 class="auth-title">Sign Up.</h1>
                 <p class="auth-subtitle mb-5">Create an account with your information to complete the registration
                     process.</p>
-                <form action="{{route('postSignUp')}}" method="POST">
+                <form action="{{route('postRegister')}}" method="POST">
                     @csrf
                     <div class="form-group position-relative has-icon-left mb-4">
                         <input type="text" class="form-control form-control-xl @error('name') is-invalid @enderror"

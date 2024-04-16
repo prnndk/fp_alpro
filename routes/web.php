@@ -19,7 +19,6 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 
-Route::get('/as', [LandingPageController::class, 'index2'])->name('landingpage');
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');
     Route::post('/register', [\App\Http\Controllers\AuthController::class, 'postRegister'])->name('postRegister');
