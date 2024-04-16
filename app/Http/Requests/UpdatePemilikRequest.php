@@ -11,7 +11,7 @@ class UpdatePemilikRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdatePemilikRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'user_id'=>'required|exists:users,id|unique:pemiliks,user_id,'.$this->pemilik->id,
+            'address'=>'required|string',
+            'phone'=>'required|numeric|min_digits:10|max_digits:13|unique:pemiliks,phone,'.$this->pemilik->id,
         ];
     }
 }

@@ -3,7 +3,7 @@
 
     <div class="page-heading">
         <h3>Buat data pembayaran Baru</h3>
-        {{--        {{Breadcrumbs::render('userCreate')}}--}}
+                {{Breadcrumbs::render('pembayaranCreate')}}
     </div>
     <div class="page-content">
         <section class="row">

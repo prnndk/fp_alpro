@@ -2,7 +2,7 @@
 @section('content')
     <div class="page-heading">
         <h3>Data Sewa Kendaraan</h3>
-        {{--        {{\Diglactic\Breadcrumbs\Breadcrumbs::render('pelanggan')}}--}}
+                {{\Diglactic\Breadcrumbs\Breadcrumbs::render('sewaOwner')}}
     </div>
     <div class="page-content">
         <section class="row">
@@ -67,9 +67,6 @@
                                 <h4>Data Persewaan</h4>
                             </div>
                             <div class="col-md-6 d-flex justify-content-end">
-                                <a href="{{route('admin.sewa.create')}}" class="btn btn-primary icon icon-left btn-sm">
-                                    <i class="bi bi-person-plus-fill"></i> Create New Sewa
-                                </a>
                             </div>
                         </div>
                     </div>

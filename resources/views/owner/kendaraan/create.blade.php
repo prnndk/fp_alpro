@@ -3,7 +3,7 @@
 
     <div class="page-heading">
         <h3>Make new Kendaraan Data</h3>
-        {{--        {{Breadcrumbs::render('userCreate')}}--}}
+                {{Breadcrumbs::render('kendaraanOwnerCreate')}}
     </div>
     <div class="page-content">
         <section class="row">

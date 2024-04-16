@@ -3,7 +3,7 @@
 
     <div class="page-heading">
         <h3>View Kendaraan Data</h3>
-        {{--        {{Breadcrumbs::render('userCreate')}}--}}
+        {{Breadcrumbs::render('kendaraanOwnerShow',$kendaraan)}}
     </div>
     <div class="page-content">
         <section class="row">
@@ -76,8 +76,8 @@
 @endsection
 @section('styles')
     <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
     />
 @endsection
 @section('scripts')

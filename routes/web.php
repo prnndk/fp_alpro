@@ -14,8 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+    if (auth()->user()->isAdmin()) {
+        return redirect()->route('admin.dashboard');
+    } elseif (auth()->user()->isOwner()) {
+        return redirect()->route('owner.kendaraan.index');
+    } elseif (auth()->user()->isUser()) {
+        return redirect()->route('user.dashboard');
+    }
+})->name('dashboard')->middleware('auth');
 Route::get('/TEST', function () {
     return view('testing');
 });

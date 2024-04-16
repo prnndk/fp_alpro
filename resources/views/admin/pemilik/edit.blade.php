@@ -3,7 +3,7 @@
 
     <div class="page-heading">
         <h3>Filled User Data</h3>
-                {{Breadcrumbs::render('pelangganEdit',$pelanggan)}}
+                {{Breadcrumbs::render('pemilikEdit',$pemilik)}}
     </div>
     <div class="page-content">
         <section class="row">
@@ -14,25 +14,15 @@
                     </div>
                     <div class="card-body">
                         <div class="col-md-6">
-                            <form action="{{route('pelanggan.update',$pelanggan->id)}}" method="post">
+                            <form action="{{route('pemilik.update',$pemilik->id)}}" method="post">
                                 @csrf
                                 @method('PUT')
-                                <div class="form-group">
-                                    <label for="nik">NIK</label>
-                                    <input type="text" id="nik"
-                                           class="form-control round @error('nik') is-invalid @enderror"
-                                           placeholder="Please Input NIK Here"
-                                           name="nik" value="{{old('nik',$pelanggan->nik)}}" required maxlength="16" minlength="16">
-                                    @error('nik')
-                                    <span class="text-danger">{{$message}}</span>
-                                    @enderror
-                                </div>
                                 <div class="form-group">
                                     <label for="phone">Phone Number</label>
                                     <input type="tel" id="phone"
                                            class="form-control round @error('phone') is-invalid @enderror"
                                            placeholder="081234567890"
-                                           name="phone" value="{{old('phone',$pelanggan->phone)}}" required maxlength="13" minlength="10">
+                                           name="phone" value="{{old('phone',$pemilik->phone)}}" required maxlength="13" minlength="10">
                                     @error('phone')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -42,7 +32,7 @@
                                     <input type="text" id="address"
                                            class="form-control round @error('address') is-invalid @enderror"
                                            placeholder="Jalan Teknik Kimia"
-                                           name="address" value="{{old('address',$pelanggan->address)}}" required>
+                                           name="address" value="{{old('address',$pemilik->address)}}" required>
                                     @error('address')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -52,7 +42,7 @@
                                     <select class="choices form-select @error('user_id') is-invalid @enderror"
                                             name="user_id" id="user_id" required>
                                         @foreach($users as $user)
-                                            @if(old('user_id',$pelanggan->user_id) == $user->id)
+                                            @if(old('user_id',$pemilik->user_id) == $user->id)
                                                 <option value="{{$user->id}}" selected>{{$user->name}}</option>
                                             @else
                                                 <option value="{{$user->id}}">{{$user->name}}</option>

@@ -18,6 +18,7 @@ class PemilikController extends Controller
      */
     public function index():View
     {
+        confirmDelete('Apakah anda yakin ingin menghapus data ini?', 'Hapus Data');
         return view('admin.pemilik.index', [
             'pemiliks' => Pemilik::all()
         ]);
@@ -55,7 +56,7 @@ class PemilikController extends Controller
      */
     public function show(Pemilik $pemilik)
     {
-        //
+        return view('admin.pemilik.view', compact('pemilik'));
     }
 
     /**
@@ -63,7 +64,8 @@ class PemilikController extends Controller
      */
     public function edit(Pemilik $pemilik)
     {
-        //
+        $users = User::where('role',RolesType::OWNER)->get();
+        return view('admin.pemilik.edit', compact('pemilik', 'users'));
     }
 
     /**
@@ -71,7 +73,17 @@ class PemilikController extends Controller
      */
     public function update(UpdatePemilikRequest $request, Pemilik $pemilik)
     {
-        //
+        $data = $request->validated();
+
+        DB::beginTransaction();
+        try {
+            $pemilik->update($data);
+            DB::commit();
+            return redirect(route('pemilik.index'))->with('success', 'Berhasil Mengubah data Pemilik');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('errors', 'Pemilik gagal diubah');
+        }
     }
 
     /**

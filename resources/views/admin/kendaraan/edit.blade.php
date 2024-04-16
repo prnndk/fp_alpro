@@ -3,7 +3,7 @@
 
     <div class="page-heading">
         <h3>Edit Kendaraan Data</h3>
-        {{--        {{Breadcrumbs::render('userCreate')}}--}}
+        {{Breadcrumbs::render('kendaraanEdit',$kendaraan)}}
     </div>
     <div class="page-content">
         <section class="row">
@@ -14,7 +14,8 @@
                     </div>
                     <div class="card-body">
                         <div class="col-md-12">
-                            <form action="{{route('admin.kendaraan.update',$kendaraan->id)}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('admin.kendaraan.update',$kendaraan->id)}}" method="post"
+                                  enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
@@ -40,7 +41,8 @@
                                     <label for="plat_nomor">Plat Nomor Kendaraan</label>
                                     <input type="text" id="plat_nomor"
                                            class="form-control round @error('plat_nomor') is-invalid @enderror"
-                                           name="plat_nomor" value="{{old('plat_nomor',$kendaraan->plat_nomor)}}" required>
+                                           name="plat_nomor" value="{{old('plat_nomor',$kendaraan->plat_nomor)}}"
+                                           required>
                                     @error('plat_nomor')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -80,9 +82,11 @@
                                             name="tipe_kendaraan_id" id="tipe_kendaraan_id" required>
                                         @foreach($tipe_kendaraans as $tipe_kendaraan)
                                             @if(old('tipe_kendaraan_id',$kendaraan->tipe_kendaraan_id) == $tipe_kendaraan->id)
-                                                <option value="{{$tipe_kendaraan->id}}" selected>{{$tipe_kendaraan->name}}</option>
+                                                <option value="{{$tipe_kendaraan->id}}"
+                                                        selected>{{$tipe_kendaraan->name}}</option>
                                             @else
-                                                <option value="{{$tipe_kendaraan->id}}">{{$tipe_kendaraan->name}}</option>
+                                                <option
+                                                    value="{{$tipe_kendaraan->id}}">{{$tipe_kendaraan->name}}</option>
                                             @endif
                                         @endforeach
                                     </select>
@@ -96,7 +100,8 @@
                                             name="pemilik_id" id="pemilik_id" required>
                                         @foreach($pemiliks as $pemilik)
                                             @if(old('pemilik_id',$kendaraan->pemilik_id) == $pemilik->id)
-                                                <option value="{{$pemilik->id}}" selected>{{$pemilik->user->name}}</option>
+                                                <option value="{{$pemilik->id}}"
+                                                        selected>{{$pemilik->user->name}}</option>
                                             @else
                                                 <option value="{{$pemilik->id}}">{{$pemilik->user->name}}</option>
                                             @endif
@@ -107,11 +112,13 @@
                                     @enderror
                                 </div>
                                 @if($kendaraan->image)
-                                    <img src="{{asset('images/kendaraan/'.$kendaraan->image)}}" alt="" class="img-fluid w-100">
+                                    <img src="{{asset('images/kendaraan/'.$kendaraan->image)}}" alt=""
+                                         class="img-fluid w-100">
                                 @endif
                                 <div class="form-group">
                                     <label for="image">Upload Image</label>
-                                    <input type="file" class="image-preview-filepond" name="image" id="image" value="{{old('image',$kendaraan->image)}}">
+                                    <input type="file" class="image-preview-filepond" name="image" id="image"
+                                           value="{{old('image',$kendaraan->image)}}">
                                 </div>
                                 <button class="btn btn-primary" type="submit">Edit Data</button>
                             </form>
@@ -127,7 +134,7 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
     />
-    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet"/>
     <link
         href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
         rel="stylesheet"

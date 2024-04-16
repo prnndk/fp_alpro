@@ -2,7 +2,7 @@
 @section('content')
     <div class="page-heading">
         <h3>Data Pengembalian Kendaraan</h3>
-        {{\Diglactic\Breadcrumbs\Breadcrumbs::render('pelanggan')}}
+        {{\Diglactic\Breadcrumbs\Breadcrumbs::render('pengembalian')}}
     </div>
     <div class="page-content">
         <section class="row">

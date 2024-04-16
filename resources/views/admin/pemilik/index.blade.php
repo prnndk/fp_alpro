@@ -2,7 +2,7 @@
 @section('content')
     <div class="page-heading">
         <h3>Data Pemilik</h3>
-{{--                {{\Diglactic\Breadcrumbs\Breadcrumbs::render('pelanggan')}}--}}
+                {{\Diglactic\Breadcrumbs\Breadcrumbs::render('pemilik')}}
     </div>
     <div class="page-content">
         <section class="row">
@@ -73,9 +73,9 @@
                                     <td>{{$pemilik->user->name}}</td>
                                     <td>{{$pemilik->phone}}</td>
                                     <td>
-                                        <a href="{{route('pelanggan.show',$pemilik->id)}}" class="btn btn-primary btn-sm">View</a>
-                                        <a href="{{route('pelanggan.edit',$pemilik->id)}}" class="btn btn-primary btn-sm">Edit</a>
-                                        <a href="{{ route('pelanggan.destroy', $pemilik->id) }}"
+                                        <a href="{{route('pemilik.show',$pemilik->id)}}" class="btn btn-primary btn-sm">View</a>
+                                        <a href="{{route('pemilik.edit',$pemilik->id)}}" class="btn btn-primary btn-sm">Edit</a>
+                                        <a href="{{route('pemilik.destroy', $pemilik->id) }}"
                                            class="btn btn-danger btn-sm" data-confirm-delete="true">Delete</a>
                                     </td>
                                 </tr>
