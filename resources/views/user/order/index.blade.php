@@ -85,7 +85,7 @@
                                         <a href="{{route('sewa.show',$sewa->uuid)}}"
                                            class="btn btn-primary icon btn-sm"><i class="bi bi-eye"></i></a>
                                         @if($sewa->status_sewa == \App\Enums\StatusSewaType::MENUNGGU)
-                                            <a href="{{ route('admin.sewa.edit', $sewa->id) }}"
+                                            <a href="{{route('bayar.show',$sewa->uuid)}}"
                                                class="btn btn-warning icon btn-sm">Bayar</a>
                                         @endif
 

@@ -68,7 +68,7 @@ class OrderController extends Controller
         $sewa->save();
 
         // Redirect to a relevant route, for example, show the created Sewa instance
-        return redirect()->route('order.index', $sewa->id)->with('success', 'Sewa created successfully!');
+        return redirect()->route('order.index')->with('success', 'Sewa created successfully!');
     }
 
     /**
