@@ -1,8 +1,8 @@
 @extends('layouts.dashboard.master')
 @section('content')
     <div class="page-heading">
-        <h3>Data Sewa Kendaraan</h3>
-{{--        {{\Diglactic\Breadcrumbs\Breadcrumbs::render('pelanggan')}}--}}
+        <h3>Data Pembayaran</h3>
+        {{--        {{\Diglactic\Breadcrumbs\Breadcrumbs::render('pelanggan')}}--}}
     </div>
     <div class="page-content">
         <section class="row">
@@ -18,8 +18,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="text-muted font-semibold">Jumlah Transaksi Sewa</h6>
-                                        <h6 class="font-extrabold mb-0">{{App\Models\Sewa::count()}}</h6>
+                                        <h6 class="text-muted font-semibold">Jumlah Pembayaran Masuk</h6>
+                                        <h6 class="font-extrabold mb-0">{{App\Models\Pembayaran::count()}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -64,11 +64,11 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4>Data Persewaan</h4>
+                                <h4>Data Pembayaran Sewa</h4>
                             </div>
                             <div class="col-md-6 d-flex justify-content-end">
-                                <a href="{{route('admin.sewa.create')}}" class="btn btn-primary icon icon-left btn-sm">
-                                    <i class="bi bi-person-plus-fill"></i> Create New Sewa
+                                <a href="{{route('admin.pembayaran.create')}}" class="btn icon icon-left btn-primary btn-sm">
+                                    <i class="bi bi-plus"></i> Buat Pembayaran
                                 </a>
                             </div>
                         </div>
@@ -78,27 +78,25 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Tanggal Sewa </th>
-                                <th>Kendaraan</th>
-                                <th>Penyewa</th>
-                                <th>Total Price</th>
-                                <th>Status</th>
+                                <th>Pembayaran Via</th>
+                                <th>Tipe Pembayaran</th>
+                                <th>Jumlah Bayar</th>
+                                <th>Status Pembayaran</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($sewas as $sewa)
+                            @foreach($pembayarans as $pembayaran)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$sewa->tanggal_sewa->format('d/m/Y')}}</td>
-                                    <td>{{$sewa->kendaraan->name}}</td>
-                                    <td>{{$sewa->user->name}}</td>
-                                    <td>{{\App\Models\Sewa::formatToRupiah($sewa->total_harga)}}</td>
-                                    <td>{{$sewa->status_sewa}}</td>
+                                    <td>{{$pembayaran->pembayaran_via}}</td>
+                                    <td>{{$pembayaran->type_pembayaran}}</td>
+                                    <td>{{$pembayaran->jumlah_dibayarkan}}</td>
+                                    <td>{{$pembayaran->status_pembayaran}}</td>
                                     <td>
-                                        <a href="{{route('admin.sewa.show',$sewa->uuid)}}" class="btn btn-primary icon btn-sm"><i class="bi bi-eye"></i></a>
-                                        <a href="{{route('admin.sewa.edit',$sewa->uuid)}}" class="btn btn-warning icon btn-sm"><i class="bi bi-pencil"></i></a>
-                                        <a href="{{ route('admin.sewa.destroy', $sewa->uuid) }}"
+                                        <a href="{{route('admin.pembayaran.show',$pembayaran->uuid)}}" class="btn btn-primary icon btn-sm"><i class="bi bi-eye"></i></a>
+                                        <a href="{{route('admin.pembayaran.edit',$pembayaran->uuid)}}" class="btn btn-warning icon btn-sm"><i class="bi bi-pencil"></i></a>
+                                        <a href="{{ route('admin.pembayaran.destroy', $pembayaran->uuid) }}"
                                            class="btn btn-danger btn-sm icon" data-confirm-delete="true"><i class="bi bi-trash"></i></a>
                                     </td>
                                 </tr>

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Livewire\Attributes\Rule;
 
 class StorePembayaranRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StorePembayaranRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,12 @@ class StorePembayaranRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'sewa_id' => 'required|exists:sewas,id',
+            'bukti_pembayaran'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'pembayaran_via' => 'required|string|max:40',
+            'jumlah_dibayarkan' => 'required|numeric',
+            'type_pembayaran' => ['required',\Illuminate\Validation\Rule::enum(\App\Enums\TipePembayaranType::class) ,'string'],
+            'status_pembayaran' => ['required',\Illuminate\Validation\Rule::enum(\App\Enums\StatusPembayaranType::class)]
         ];
     }
 }

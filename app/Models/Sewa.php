@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\StatusSewaType;
 use App\Traits\Uuid;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,10 @@ class Sewa extends Model
 
     protected $guarded = ['id'];
 
+    public function getRouteKeyName(): String
+    {
+        return 'uuid';
+    }
     protected $casts = [
         'tanggal_sewa'=>'date',
         'tanggal_perkiraan_kembali'=>'date',
@@ -46,5 +51,11 @@ class Sewa extends Model
     public static function formatToRupiah(int $value): string
     {
         return "Rp " . number_format($value,0,',','.');
+    }
+    public static function formatRupiah(): Attribute
+    {
+        return Attribute::make(
+            get: fn(mixed $value, array $attributes) => self::formatToRupiah($attributes['total_harga']),
+        );
     }
 }

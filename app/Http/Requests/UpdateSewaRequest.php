@@ -11,7 +11,7 @@ class UpdateSewaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateSewaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tanggal_sewa' => 'required|date',
+            'tanggal_perkiraan_kembali' => 'required|date',
+            'users_id' => 'required|exists:users,id',
+            'kendaraan_id' => 'required|exists:kendaraans,id',
         ];
     }
 }
