@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Enums\RolesType;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -40,11 +40,13 @@ class AuthController extends Controller
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
     }
-    public function register(): View
+
+    public function signup(): View
     {
-        return view('auth.register');
+        return view('auth.signup');
     }
-    public function postRegister(RegisterRequest $request): RedirectResponse
+
+    public function store(RegisterRequest $request): RedirectResponse
     {
         $data = $request->validated();
 
@@ -59,11 +61,12 @@ class AuthController extends Controller
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->with('error',$e->getMessage())->withInput();
+            return back()->with('error', $e->getMessage())->withInput();
         }
 
         return redirect(route('login'))->with('success', 'Register success, please login');
     }
+
     public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
