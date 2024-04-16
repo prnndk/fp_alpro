@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\TipePembayaranType;
 use App\Traits\Uuid;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,7 +18,7 @@ class Pembayaran extends Model
         return $this->belongsTo(Sewa::class);
     }
 
-    public function getRouteKeyName(): String
+    public function getRouteKeyName(): string
     {
         return 'uuid';
     }

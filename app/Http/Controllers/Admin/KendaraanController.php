@@ -20,8 +20,8 @@ class KendaraanController extends Controller
     public function index(): View
     {
         $kendaraans = Kendaraan::all();
-        confirmDelete('Menghapus data kendaraan','Apakah anda yakin menghapus data kendaraan ini?');
-        return view('admin.kendaraan.index',compact('kendaraans'));
+        confirmDelete('Menghapus data kendaraan', 'Apakah anda yakin menghapus data kendaraan ini?');
+        return view('admin.kendaraan.index', compact('kendaraans'));
     }
 
     /**
@@ -31,7 +31,7 @@ class KendaraanController extends Controller
     {
         $tipe_kendaraans = TipeKendaraan::all();
         $pemiliks = Pemilik::all();
-        return view('admin.kendaraan.create',compact('tipe_kendaraans','pemiliks'));
+        return view('admin.kendaraan.create', compact('tipe_kendaraans', 'pemiliks'));
     }
 
     /**
@@ -41,21 +41,21 @@ class KendaraanController extends Controller
     {
         $validated = $request->validated();
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = time().'_'.$file->getClientOriginalName();
-            $file->move(public_path('images/kendaraan'),$filename);
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('images/kendaraan'), $filename);
             $validated['image'] = $filename;
         }
 
         DB::beginTransaction();
-        try{
+        try {
             Kendaraan::create($validated);
             DB::commit();
-            return redirect(route('admin.kendaraan.index'))->with('success','Kendaraan berhasil ditambahkan');
-        }catch (\Exception $e){
+            return redirect(route('admin.kendaraan.index'))->with('success', 'Kendaraan berhasil ditambahkan');
+        } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('errors',"Gagal Menambah Kendaraan");
+            return redirect()->back()->with('errors', "Gagal Menambah Kendaraan");
         }
     }
 
@@ -64,7 +64,7 @@ class KendaraanController extends Controller
      */
     public function show(Kendaraan $kendaraan): View
     {
-        return view('admin.kendaraan.view',compact('kendaraan'));
+        return view('admin.kendaraan.view', compact('kendaraan'));
     }
 
     /**
@@ -74,7 +74,7 @@ class KendaraanController extends Controller
     {
         $tipe_kendaraans = TipeKendaraan::all();
         $pemiliks = Pemilik::all();
-        return view('admin.kendaraan.edit',compact('kendaraan','tipe_kendaraans','pemiliks'));
+        return view('admin.kendaraan.edit', compact('kendaraan', 'tipe_kendaraans', 'pemiliks'));
     }
 
     /**
@@ -84,21 +84,21 @@ class KendaraanController extends Controller
     {
         $validated = $request->validated();
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = time().'_'.$file->getClientOriginalName();
-            $file->move(public_path('images/kendaraan'),$filename);
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('images/kendaraan'), $filename);
             $validated['image'] = $filename;
         }
 
         DB::beginTransaction();
-        try{
+        try {
             $kendaraan->update($validated);
             DB::commit();
-            return redirect(route('admin.kendaraan.index'))->with('success','Kendaraan berhasil diubah');
-        }catch (\Exception $e){
+            return redirect(route('admin.kendaraan.index'))->with('success', 'Kendaraan berhasil diubah');
+        } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('errors',"Gagal Mengubah Kendaraan");
+            return redirect()->back()->with('errors', "Gagal Mengubah Kendaraan");
         }
     }
 
@@ -108,13 +108,13 @@ class KendaraanController extends Controller
     public function destroy(Kendaraan $kendaraan): RedirectResponse
     {
         DB::beginTransaction();
-        try{
+        try {
             $kendaraan->delete();
             DB::commit();
-            return redirect(route('admin.kendaraan.index'))->with('success','Kendaraan berhasil dihapus');
-        }catch (\Exception $e){
+            return redirect(route('admin.kendaraan.index'))->with('success', 'Kendaraan berhasil dihapus');
+        } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('errors',"Gagal Menghapus Kendaraan");
+            return redirect()->back()->with('errors', "Gagal Menghapus Kendaraan");
         }
     }
 }
