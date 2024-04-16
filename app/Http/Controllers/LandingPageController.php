@@ -12,6 +12,6 @@ class LandingPageController extends Controller
         $kendaraans = Kendaraan::with('tipe_kendaraan')->get();
         $tipeKendaraans = TipeKendaraan::all();
 
-        return view('landingpage', compact('kendaraans', 'tipeKendaraans'));
+        return view('landingpage2', compact('kendaraans', 'tipeKendaraans'));
     }
 }

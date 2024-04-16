@@ -82,7 +82,7 @@
                                     <td>{{\App\Models\Sewa::formatToRupiah($sewa->total_harga)}}</td>
                                     <td>{{$sewa->status_sewa}}</td>
                                     <td>
-                                        <a href="{{route('sewa.show',$sewa->id)}}"
+                                        <a href="{{route('sewa.show',$sewa->uuid)}}"
                                            class="btn btn-primary icon btn-sm"><i class="bi bi-eye"></i></a>
                                         @if($sewa->status_sewa == \App\Enums\StatusSewaType::MENUNGGU)
                                             <a href="{{ route('admin.sewa.edit', $sewa->id) }}"
