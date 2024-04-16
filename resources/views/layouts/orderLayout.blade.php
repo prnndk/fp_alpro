@@ -78,7 +78,7 @@
                 </div>
             </nav>
         </header>
-        <div id="main-content" class="bg-warning">
+        <div id="main-content" >
             @yield('content')
         </div>
     </div>

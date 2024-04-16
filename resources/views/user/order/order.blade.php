@@ -8,7 +8,7 @@
             <div class="col-3">
                 <div class="card">
                     <div class="card-img ratio ratio-1x1">
-                        <img src="{{asset('/images/texzture 1.png')}}" alt="texzture 1" width="100%" height="100%"
+                        <img src="{{ $order->image ? asset('images/kendaraan/' . $Kendaraan->image) : 'https://electricvehiclecouncil.com.au/wp-content/uploads/2023/02/4-1002x1024.png' }}" alt="texzture 1" width="100%" height="100%"
                              class="p-1 p-sm-3 rounded-3">
                     </div>
                 </div>
@@ -67,6 +67,14 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body ">
+                        <div class="form-group">
+        <label for="name">Nama Penyewa</label>
+        <input type="text" id="name"
+               class="form-control round"
+               name="name" value="{{auth()->user()->name}}"
+               disabled readonly>
+    </div>
+
                         <form action="{{ route('order.store') }}" method="post">
                             @csrf
                             <div class="form-group">
@@ -95,7 +103,7 @@
                                        placeholder="Total Price"
                                        name="total_harga" value="{{ old('total_harga') }}" readonly>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group d-none">
                                 <label for="kendaraan_id">Select Kendaraan</label>
                                 <input class="form-control round @error('kendaraan_id') is-invalid @enderror"
                                        name="kendaraan_id" id="kendaraan_id"
