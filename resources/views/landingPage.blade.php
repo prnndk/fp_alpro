@@ -18,10 +18,10 @@
         @if(auth()->check())
             <a href="{{route('dashboard')}}" class="btn btn-light">Dashboard</a>
         @else
-        <div>
-            <a href="{{route('login')}}" class="btn btn-light">Log In</a>
-            <a href="{{route('register')}}" class="btn btn-dark">Sign Up</a>
-        </div>
+            <div>
+                <a href="{{route('login')}}" class="btn btn-light">Log In</a>
+                <a href="{{route('register')}}" class="btn btn-dark">Sign Up</a>
+            </div>
         @endif
     </div>
 </nav>
