@@ -48,7 +48,7 @@ class BayarController extends Controller
         try {
             Pembayaran::create($validated);
             DB::commit();
-            return redirect(route('order.index'))->with('success', 'Berhasil Membuat Pembayaran');
+            return redirect(route('user.dashboard'))->with('success', 'Berhasil Membuat Pembayaran');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('errors', "Gagal Menambahkan data Pembayaran");

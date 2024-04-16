@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Sewa;
 use Illuminate\Http\Request;
+use App\Models\Pembayaran;
 
 class SewaController extends Controller
 {
@@ -37,7 +38,9 @@ class SewaController extends Controller
      */
     public function show(Sewa $sewa)
     {
-        return view('user.sewa.view', compact('sewa'));
+        
+        $pembayarans = Pembayaran::where('sewa_id', $sewa->id)->get();
+        return view('user.sewa.view', compact('sewa', 'pembayarans'));
     }
 
     /**

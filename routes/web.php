@@ -50,6 +50,7 @@ Route::prefix('/owner')->middleware(['auth', 'role:owner'])->group(function () {
 });
 
 Route::prefix('/user')->middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user.dashboard');
     Route::resource('/order', \App\Http\Controllers\User\OrderController::class);
     Route::resource('/sewa', \App\Http\Controllers\User\SewaController::class);
     Route::resource('/bayar', \App\Http\Controllers\User\BayarController::class);
