@@ -3,7 +3,7 @@
 
     <div class="page-heading">
         <h3>Create Tipe Kendaraan</h3>
-        {{--        {{Breadcrumbs::render('userCreate')}}--}}
+        {{Breadcrumbs::render('tipeEdit',$tipeKendaraan)}}
     </div>
     <div class="page-content">
         <section class="row">
