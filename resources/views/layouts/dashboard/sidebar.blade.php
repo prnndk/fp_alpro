@@ -51,7 +51,7 @@
             @if(auth()->user()->isUser())
                 <li
                     class="sidebar-item ">
-                    <a href="{{route('landingpage')}}" class='sidebar-link'>
+                    <a href="{{route('user.dashboard')}}" class='sidebar-link'>
                         <i class="bi bi-bag-plus"></i>
                         <span>Order</span>
                     </a>
@@ -67,54 +67,68 @@
                 <li
                     class="sidebar-item ">
                     <a href="{{route('pelanggan.index')}}" class='sidebar-link'>
-                        <i class="bi bi-person-fill"></i>
+                        <i class="bi bi-person-raised-hand"></i>
                         <span>Pelanggan</span>
                     </a>
                 </li>
                 <li
                     class="sidebar-item ">
                     <a href="{{route('pemilik.index')}}" class='sidebar-link'>
-                        <i class="bi bi-person-fill"></i>
+                        <i class="bi bi-person-vcard"></i>
                         <span>Pemilik</span>
                     </a>
                 </li>
                 <li
                     class="sidebar-item ">
+                    <a href="{{route('admin.kendaraan.index')}}" class='sidebar-link'>
+                        <i class="bi bi-car-front"></i>
+                        <span>Kendaraan</span>
+                    </a>
+                </li>
+                <li
+                    class="sidebar-item ">
                     <a href="{{route('tipe_kendaraan.index')}}" class='sidebar-link'>
-                        <i class="bi bi-person-fill"></i>
+                        <i class="bi bi-card-checklist"></i>
                         <span>Tipe Kendaraan</span>
                     </a>
                 </li>
                 <li
                     class="sidebar-item ">
                     <a href="{{route('admin.sewa.index')}}" class='sidebar-link'>
-                        <i class="bi bi-person-fill"></i>
+                        <i class="bi bi-cart-check"></i>
                         <span>Sewa</span>
                     </a>
                 </li>
                 <li
                     class="sidebar-item ">
                     <a href="{{route('admin.pembayaran.index')}}" class='sidebar-link'>
-                        <i class="bi bi-person-fill"></i>
+                        <i class="bi bi-cash"></i>
                         <span>Pembayaran</span>
                     </a>
                 </li>
                 <li
                     class="sidebar-item ">
                     <a href="{{route('admin.pengembalian.index')}}" class='sidebar-link'>
-                        <i class="bi bi-person-fill"></i>
+                        <i class="bi bi-arrow-repeat"></i>
                         <span>Pengembalian</span>
                     </a>
                 </li>
             @elseif(auth()->user()->isOwner())
                 <li
                     class="sidebar-item ">
-                    <a href="{{route('users.index')}}" class='sidebar-link'>
-                        <i class="bi bi-person-fill"></i>
-                        <span>Users</span>
+                    <a href="{{route('owner.kendaraan.index')}}" class='sidebar-link'>
+                        <i class="bi bi-car-front"></i>
+                        <span>Kendaraan</span>
                     </a>
-
                 </li>
+                <li
+                    class="sidebar-item ">
+                    <a href="{{route('owner.sewa.index')}}" class='sidebar-link'>
+                        <i class="bi bi-basket"></i>
+                        <span>Sewa</span>
+                    </a>
+                </li>
+                
             @endif
 
         </ul>

@@ -30,7 +30,7 @@ class AuthController extends Controller
             if (Auth::user()->role == RolesType::ADMIN) {
                 return redirect()->intended(route('admin.dashboard'));
             } elseif (Auth::user()->role == RolesType::OWNER) {
-                return redirect()->intended(route('owner.dashboard'));
+                return redirect()->intended(route('owner.kendaraan.index'));
             } else {
                 return redirect()->intended(route('landingpage'));
             }
