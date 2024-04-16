@@ -44,6 +44,9 @@ Route::prefix('/admin')->middleware(['auth', 'role:admin'])->group(function () {
 });
 Route::prefix('/owner')->middleware(['auth', 'role:owner'])->group(function () {
     Route::resource('/kendaraan', \App\Http\Controllers\Owner\KendaraanController::class)->names('owner.kendaraan');
+    Route::get('/sewa/{sewa:uuid}/pengembalian', [\App\Http\Controllers\Owner\PengembalianController::class, 'create'])->name('owner.pengembalian.create');
+    Route::post('/sewa/{sewa:uuid}/pengembalian', [\App\Http\Controllers\Owner\PengembalianController::class, 'store'])->name('owner.pengembalian.store');
+    Route::resource('/sewa', \App\Http\Controllers\Owner\SewaController::class)->names('owner.sewa');
 });
 
 Route::prefix('/user')->middleware(['auth', 'role:user'])->group(function () {
