@@ -1,8 +1,8 @@
 @extends('layouts.dashboard.master')
 @section('content')
     <div class="page-heading">
-        <h3>Data Pelanggan</h3>
-        {{\Diglactic\Breadcrumbs\Breadcrumbs::render('pelanggan')}}
+        <h3>Data Tipe Kendaraan</h3>
+        {{\Diglactic\Breadcrumbs\Breadcrumbs::render('tipe')}}
 
     </div>
     <div class="page-content">

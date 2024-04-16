@@ -3,7 +3,7 @@
 
     <div class="page-heading">
         <h3>Edit Sewa Kendaraan</h3>
-        {{--        {{Breadcrumbs::render('userCreate')}}--}}
+                {{Breadcrumbs::render('sewaEdit',$sewa)}}
     </div>
     <div class="page-content">
         <section class="row">

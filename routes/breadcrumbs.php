@@ -59,5 +59,37 @@ Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
 // User
 Breadcrumbs::for('user', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
-    $trail->push('User', route('order.index'));
+    $trail->push('User', route('admin.sewa.index'));
+});
+
+
+//SEWA
+Breadcrumbs::for('sewa', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Sewa', route('users.index'));
+});
+Breadcrumbs::for('sewaDetail', function (BreadcrumbTrail $trail, $sewa) {
+    $trail->parent('sewa');
+    $trail->push('Detail', route('admin.sewa.show', $sewa->uuid ));
+});
+
+Breadcrumbs::for('sewaEdit', function (BreadcrumbTrail $trail, $sewa) {
+    $trail->parent('sewa', $sewa);
+    $trail->push('Edit', route('admin.sewa.edit', $sewa));
+});
+
+
+//tipe Kendaraan
+Breadcrumbs::for('tipe', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Tipe Kendaraan', route('tipe_kendaraan.index'));
+});
+Breadcrumbs::for('tipeDetail', function (BreadcrumbTrail $trail, $tipeKendaraan) {
+    $trail->parent('tipe');
+    $trail->push('Detail', route('tipe_kendaraan.show', $tipeKendaraan->id));
+});
+
+Breadcrumbs::for('tipeEdit', function (BreadcrumbTrail $trail, $tipeKendaraan) {
+    $trail->parent('tipe', $tipeKendaraan);
+    $trail->push('Edit', route('tipe_kendaraan.edit', $tipeKendaraan));
 });
