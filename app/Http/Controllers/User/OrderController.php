@@ -17,11 +17,8 @@ class OrderController extends Controller
      * Display a listing of the resource.
      */
 
-    public function index(): View
+    public function index()
     {
-        $userId = Auth::id();
-        $sewas = Sewa::with('user', 'kendaraan')->where('Users_id', $userId)->get();
-        return view('user.order.index', compact('sewas'));
     }
 
 
@@ -68,7 +65,7 @@ class OrderController extends Controller
         $sewa->save();
 
         // Redirect to a relevant route, for example, show the created Sewa instance
-        return redirect()->route('order.index')->with('success', 'Sewa created successfully!');
+        return redirect()->route('user.dashboard')->with('success', 'Sewa created successfully!');
     }
 
     /**
