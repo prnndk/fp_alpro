@@ -153,7 +153,7 @@
                                 <a href="{{route('login')}}">
                                     <button type="button" class="btn btn-light">Log In</button>
                                 </a>
-                                <a href="{{route('signup')}}">
+                                <a href="{{route('register')}}">
                                     <button type="button" class="btn btn-dark">Sign Up</button>
                                 </a>
                             </div>

@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="image">Upload Image</label>
-                                    <input type="file" class="image-preview-filepond" name="image" id="image" value="{{old('image',$kendaraan->image)}}">
+                                    <input type="file" class="image-preview-filepond" name="image" id="image" value="{{old('image')}}">
                                 </div>
                                 <button class="btn btn-primary" type="submit">Submit</button>
                             </form>

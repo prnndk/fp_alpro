@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="col-6">
                 <div class="card">
@@ -87,7 +87,7 @@
                                                     <td>Status Pembayaran</td>
                                                     <td>{{$pembayaran->status_pembayaran}}</td>
                                                 </tr>
-                                               
+
                                                 </tbody>
                                             </table>
                                         </div>

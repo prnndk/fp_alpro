@@ -109,7 +109,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <a href="{{route('order.index')}}" class=" col-1 btn btn-primary icon btn-sm">Back</a>
+                <a href="{{route('user.dashboard')}}" class=" col-1 btn btn-primary icon btn-sm">Back</a>
             </div>
     </div>
     </section>
